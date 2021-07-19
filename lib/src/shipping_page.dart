@@ -89,7 +89,7 @@ class _ShippingState extends State<Shipping> {
           ),
           Row(children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 15, 5),
+              padding: EdgeInsets.fromLTRB(20, 20, 5, 5),
               child: SizedBox(
                 width: 150,
                 child: TextButton(
@@ -115,7 +115,7 @@ class _ShippingState extends State<Shipping> {
               padding: EdgeInsets.only(top: 20),
               child: TextButton.icon(
                 label: Text('Return to Cart'),
-                icon: Icon(Icons.arrow_back_ios, size: 14),
+                icon: Icon(Icons.arrow_back_ios, size: 12),
                 onPressed: () => Navigator.of(context).pop(),
               )
             )

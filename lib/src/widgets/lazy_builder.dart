@@ -17,6 +17,7 @@ class LazyBuilderController<T> extends ChangeNotifier {
       _value = await fetcher();
     } catch (e) {
       _error = e;
+      rethrow;
     } finally {
       _loading = false;
       notifyListeners();

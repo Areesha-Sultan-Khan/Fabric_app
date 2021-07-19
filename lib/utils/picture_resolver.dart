@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 
 String resolveImageUrl(String url) {
   if (kDebugMode) {
-    return url.replaceAll('localhost', Uri.parse(ProductService.apiUrl).host).replaceAll('public/', '');
+     return url.replaceAll('localhost', Uri.parse(ProductService.apiUrl).host).replaceAll('public/', '');
   } else {
     return url;
-  }
+   }
 }

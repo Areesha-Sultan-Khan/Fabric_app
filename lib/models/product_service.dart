@@ -7,9 +7,11 @@ import 'package:flutter/foundation.dart';
 import 'categories_model.dart';
 
 class ProductService {
-  static const apiUrl = kDebugMode
-      ? 'http://192.168.10.7:8000/api'
-      : 'http://ecom-api.polobaaz.com/api';
+  static const apiUrl = 'http://192.168.10.4:8000/api';
+      // kDebugMode
+      // ? 'http://192.168.212.183:8000/api'
+      // :
+      // 'http://ecom-api.polobaaz.com/api';
 
   void categories() {
     void getHttp() async {

@@ -14,7 +14,9 @@ class SliderModel{
         message = json['message'],
         image_url = json['image_url'],
         created_at = DateTime.parse(json['created_at']),
-        updated_at = DateTime.parse(json['updated_at']);
+        updated_at = DateTime.parse(json['updated_at']) {
+    print(json);
+  }
 
   Map<String,dynamic> toJson() => {
 

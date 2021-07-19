@@ -51,7 +51,7 @@ class _ProductPageState extends State<ProductPage> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            padding: EdgeInsets.fromLTRB(10, 10, 20, 0),
            child: Html(
              data: widget.product.detail ,
 
