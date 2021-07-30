@@ -91,13 +91,13 @@ class _ShippingState extends State<Shipping> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 5, 5),
               child: SizedBox(
-                width: 150,
+                width: 180,
                 child: TextButton(
                   onPressed: () => navigateTo(context, PaymentPage(user: widget.user)),
                   child: Text(
                     'Continue to Payment',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),

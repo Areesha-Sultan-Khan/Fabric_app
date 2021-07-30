@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
           controller: hotProducts,
           builder: (data) {
             return SizedBox(
-              height: 250,
+              height: 260,
               child: ListView.builder(
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 scrollDirection: Axis.horizontal,

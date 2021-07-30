@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:fabric_app/models/cart_model.dart';
 import 'package:fabric_app/models/product_model.dart';
 import 'package:fabric_app/models/product_service.dart';
@@ -44,13 +45,59 @@ class _OrderDisplayState extends State<OrderDisplay> {
           return ListView.builder(
             itemBuilder: (context, index) {
               final order = data[index];
-              return Card(
-                child: GestureDetector(
-                  onTap: () => navigateTo(context, OrderList(order['id'].toString())),
-                  child: ListTile(
-                    title: Text('Ref # ' + order['id'].toString()),
-                    subtitle: Text(DateFormat('d MMM y hh:mm a').format(DateTime.parse(order['order_date']))),
-                    trailing: Text(NumberFormat.currency(locale: 'en', name: 'PKR ').format(order['price'])),
+              return Dismissible(
+                key: ValueKey(order['id']),
+                direction: DismissDirection.endToStart,
+                onDismissed: (_) async {
+                  try {
+                    final resp = await Dio().delete('${ProductService.apiUrl}/orders/${order['id']}');
+                  } on DioError catch(e) {
+                    print(e.response.data);
+                  }
+                  await this.order.reload();
+                },
+                confirmDismiss: (_) async {
+                  final result = await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text('Are you sure?'),
+                        content: Text('This order will be removed'),
+                        actions: [
+                          TextButton(
+                            child: Text('Yes'),
+                            onPressed: () => Navigator.of(context).pop(true),
+                          ),
+                          TextButton(
+                            child: Text('No'),
+                            onPressed: () => Navigator.of(context).pop(false),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+
+                  return result ?? false;
+                },
+                background: Container(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(Icons.delete, color: Colors.red),
+                  ),
+                ),
+                child: Card(
+                  child: GestureDetector(
+                    onTap: () =>
+                        navigateTo(context, OrderList(order['id'].toString())),
+                    child: ListTile(
+                      title: Text('Ref # ' + order['id'].toString()),
+                      subtitle: Text(DateFormat('d MMM y hh:mm a')
+                          .format(DateTime.parse(order['order_date']))),
+                      trailing: Text(
+                          NumberFormat.currency(locale: 'en', name: 'PKR ')
+                              .format(order['price'])),
+                    ),
                   ),
                 ),
               );

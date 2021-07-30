@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'categories_model.dart';
 
 class ProductService {
-  static const apiUrl = 'http://192.168.10.4:8000/api';
+  static const apiUrl = 'http://192.168.10.10:8000/api';
       // kDebugMode
       // ? 'http://192.168.212.183:8000/api'
       // :

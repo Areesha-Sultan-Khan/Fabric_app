@@ -155,7 +155,7 @@ class _UserInfoState extends State<UserInfo> {
             Padding(
               padding: EdgeInsets.fromLTRB(100, 10, 100, 0),
               child: SizedBox(
-                width: 150,
+                width: 200,
                 child: TextButton(
                   onPressed: () {
                     if (!formKey.currentState.validate()) return;
